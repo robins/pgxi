@@ -1,0 +1,181 @@
+<SchoolList>
+  <School ID="13579">
+    <SchoolID>
+      <SIS:Identification xmlns:SIS="http://www.example.com/namespace">
+        <SIS:PrimaryID>12345</SIS:PrimaryID>
+        <SIS:SecondaryID>67890</SIS:SecondaryID>
+        <SIS:RealName>St. Columba's School</SIS:RealName>
+        <SIS:SchoolDescription>St. Columba's School, Delhi, India, was established in 1941, one of twelve thousand English Medium schools of its kind conducted by the Indian Province of the Congregation of Christian Brothers which was founded by Edmund Ignatius Rice, a Roman Catholic missionary and educationalist. It has followed the CBSE system of education. The campus of St. Columba's School is located in the heart of Delhi and extends over a couple of acres. St. Columba's School alumni include 2 Rhodes Scholars and a Pulitzer Prize winner. Students are referred to as Columbans. The school admits only boys. Famous celebrities like Shah Rukh Khan and Kunal Nayyar have passed out from St.Columbas.</SIS:SchoolDescription>
+        <SIS:WebSite>http://www.stcolumbas.net</SIS:WebSite>
+      </SIS:Identification>
+      <SIS:Address Type="School" xmlns:SIS="http://www.example.com/namespace">
+        <SIS:Address1>1, Ashok Place, Near Gole Dakhana, Gole Market</SIS:Address1>
+        <SIS:City>New Delhi</SIS:City>
+        <SIS:State>Delhi</SIS:State>
+        <SIS:PostalCode>110001</SIS:PostalCode>
+        <SIS:Email>principal@stcolumbas.net</SIS:Email>
+      </SIS:Address>
+    </SchoolID>
+    <Information>
+      <SchoolType>Standard</SchoolType>
+      <Students>252</Students>
+      <OfficeHour>
+        <OpenTime>8:00 AM</OpenTime>
+        <CloseTime>9:30 AM</CloseTime>
+        <Day>Monday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>8:00 AM</OpenTime>
+        <CloseTime>9:30 AM</CloseTime>
+        <Day>Tuesday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>8:00 AM</OpenTime>
+        <CloseTime>9:30 AM</CloseTime>
+        <Day>Wednesday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>8:00 AM</OpenTime>
+        <CloseTime>9:30 AM</CloseTime>
+        <Day>Thursday</Day>
+      </OfficeHour>
+      <OfficeHour>
+        <OpenTime>8:00 AM</OpenTime>
+        <CloseTime>9:30 AM</CloseTime>
+        <Day>Friday</Day>
+      </OfficeHour>
+      <Parking Type="None">
+        <Spaces>10</Spaces>
+        <Comment>Only for parents seeking admission.</Comment>
+      </Parking>
+      <DrivingDirections />
+    </Information>
+    <Amenity Type="Other">
+      <Description>Swimming Pool</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Computer Lab</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Indoor BasketBall Court</Description>
+      <Rank />
+    </Amenity>
+    <Class Id="1" Type="Internal">
+      <Name>Class 1</Name>
+      <SeatCount>250</SeatCount>
+      <SeatAvailable>20</SeatAvailable>
+      <Amenity Type="AirConditioner">
+        <Description>AirConditioner</Description>
+        <Rank>0</Rank>
+      </Amenity>
+      <Amenity Type="CeilingFan">
+        <Description>CeilingFan</Description>
+        <Rank>0</Rank>
+      </Amenity>
+      <Amenity Type="Disposal">
+        <Description>Disposal</Description>
+        <Rank>0</Rank>
+      </Amenity>
+      <Amenity Type="IndividualClimateControl">
+        <Description>IndividualClimateControl</Description>
+        <Rank>0</Rank>
+      </Amenity>
+      <Amenity Type="Microwave">
+        <Description>Microwave</Description>
+        <Rank>0</Rank>
+      </Amenity>
+      <Amenity Type="View">
+        <Description>View</Description>
+        <Rank>0</Rank>
+      </Amenity>
+    </Class>
+    <Class Id="2" Type="Internal">
+      <Name>Class 2</Name>
+      <SeatCount>250</SeatCount>
+      <SeatAvailable>30</SeatAvailable>
+      <TotalRoomCount>2</TotalRoomCount>
+      <Amenity Type="AirConditioner">
+        <Description>AirConditioner</Description>
+        <Rank>0</Rank>
+      </Amenity>
+      <Amenity Type="CeilingFan">
+        <Description>CeilingFan</Description>
+        <Rank>0</Rank>
+      </Amenity>
+      <Amenity Type="View">
+        <Description>View</Description>
+        <Rank>0</Rank>
+      </Amenity>
+    </Class>
+    <Utility />
+    <File Id="266238" Active="true">
+      <Type>Photo</Type>
+      <Description />
+      <Name />
+      <Caption />
+      <Format>jpg</Format>
+      <Src>http://www.topdelhischools.com/wp-content/uploads/s12.jpg</Src>
+      <Width>1179</Width>
+      <Height>950</Height>
+      <Rank>0</Rank>
+      <AffiliateID>82654</AffiliateID>
+    </File>
+  </School>
+  <School ID="13580">
+    <SchoolID>
+      <SIS:Identification xmlns:SIS="http://www.example.com/namespace">
+        <SIS:PrimaryID>12346</SIS:PrimaryID>
+        <SIS:SecondaryID>67891</SIS:SecondaryID>
+        <SIS:RealName>Modern School</SIS:RealName>
+        <SIS:SchoolDescription>NA</SIS:SchoolDescription>
+        <SIS:WebSite></SIS:WebSite>
+      </SIS:Identification>
+      <SIS:Address Type="School" xmlns:SIS="http://www.example.com/namespace">
+        <SIS:Address1>Not available</SIS:Address1>
+        <SIS:City>New Delhi</SIS:City>
+        <SIS:State>Delhi</SIS:State>
+        <SIS:PostalCode></SIS:PostalCode>
+        <SIS:Email>principal@unknown.net</SIS:Email>
+      </SIS:Address>
+    </SchoolID>
+    <ILS_Identification Type="School"/>
+    <Information>
+      <SchoolType>Standard</SchoolType>
+      <Students>109</Students>
+      <OfficeHour>
+        <OpenTime>8:00 AM</OpenTime>
+        <CloseTime>9:30 AM</CloseTime>
+        <Day>Monday</Day>
+      </OfficeHour>
+      <Parking Type="None">
+        <Spaces>100</Spaces>
+        <Comment>Only for parents seeking admission.</Comment>
+      </Parking>
+      <DrivingDirections />
+    </Information>
+    <Accounting />
+    <Amenity Type="Other">
+      <Description>Swimming Pool</Description>
+      <Rank />
+    </Amenity>
+    <Amenity Type="Other">
+      <Description>Computer Lab</Description>
+      <Rank />
+    </Amenity>
+    <Utility />
+    <File Id="266234" Active="true">
+      <Type>Photo</Type>
+      <Description />
+      <Name />
+      <Caption />
+      <Format>jpg</Format>
+      <Src>http://www.modernschool.net/img/slider/toppic-crest3.jpg</Src>
+      <Width>980</Width>
+      <Height>366</Height>
+      <Rank>0</Rank>
+      <AffiliateID>82655</AffiliateID>
+    </File>
+  </School>
+</SchoolList>
