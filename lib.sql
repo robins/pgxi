@@ -1,3 +1,7 @@
+/*
+ * At the minimum, requires PostgreSQL 9.3+
+ */
+
 DO
 $$
 BEGIN
@@ -10,20 +14,21 @@ $$ LANGUAGE PLPGSQL;
 
 SET search_path = 'xmlimport';
 
-DROP EXTENSION IF EXISTS dblink;
-CREATE EXTENSION IF NOT EXISTS dblink WITH SCHEMA xmlimport;
+DROP EXTENSION    IF      EXISTS dblink;
+CREATE EXTENSION  IF NOT  EXISTS dblink WITH SCHEMA xmlimport;
 
-DROP TABLE IF EXISTS xmlimport.xml_file_import (txt TEXT);
-CREATE TABLE xmlimport.xml_file_import (txt TEXT);
+DROP    TABLE IF EXISTS xmlimport.xml_file_import (txt TEXT);
+CREATE  TABLE           xmlimport.xml_file_import (txt TEXT);
 
-DROP TABLE IF EXISTS xmlimport.xml_nodes(xmlnode TEXT);
-CREATE TABLE xmlimport.xml_nodes(xmlnode TEXT);
+DROP    TABLE IF EXISTS xmlimport.xml_nodes(xmlnode TEXT);
+CREATE  TABLE           xmlimport.xml_nodes(xmlnode TEXT);
 
 
 CREATE OR REPLACE FUNCTION bytea_import(
   p_path            text, 
   p_result    OUT   bytea
-) LANGUAGE plpgsql AS $$
+) AS 
+$$
 DECLARE
   l_oid OID;
   r     RECORD;
@@ -34,16 +39,16 @@ BEGIN
   
   FOR r IN ( 
     SELECT data 
-    FROM pg_largeobject 
+    FROM  pg_largeobject 
     WHERE loid = l_oid 
     ORDER BY pageno
   ) LOOP
     p_result = p_result || r.data;
   END LOOP;
   
-  perform lo_unlink(l_oid);
+  PERFORM lo_unlink(l_oid);
 END;
-$$;
+$$ LANGUAGE PLPGSQL;
 
 
 CREATE OR REPLACE FUNCTION DumpXMLFile()
@@ -61,27 +66,32 @@ $$ LANGUAGE PLPGSQL;
 
 
 
--- SELECT SplitIntoXMLNodes('Student');
-CREATE OR REPLACE FUNCTION SplitIntoXMLNodes(_Separator TEXT)
-RETURNS VOID AS
+-- SELECT SplitIntoXMLNodes('//SchoolList/Student');
+CREATE OR REPLACE FUNCTION SplitIntoXMLNodes(
+  _XPathSeparator TEXT
+) RETURNS VOID AS
 $$
 DECLARE 
   q TEXT;
 BEGIN
  
   PERFORM xmlimport.dblink(
-    'password=xmlimport user=xmlimport host=localhost dbname=' || current_database(), 
+    'dbname=' || current_database(), 
     FORMAT(
       $q$
         INSERT INTO xmlimport.xml_nodes(xmlnode)
         SELECT %s::TEXT
-      $q$::TEXT, quote_literal(r)
+      $q$::TEXT, 
+      quote_literal(r)
     )
   ) AS a
   FROM unnest(
     xpath(
-      '//' || _Separator, 
-      (SELECT txt from xmlimport.xml_file_import)::XML
+      _XPathSeparator, 
+      (
+        SELECT txt 
+        FROM xmlimport.xml_file_import
+      )::XML
     )
   ) a(r);
   
@@ -104,29 +114,39 @@ $$
       WHEN $1 LIKE '%/'
         THEN (xpath($1 || 'text()', $2))[1]
       ELSE (xpath($1 || '/text()', $2))[1]
-    END::text;
+    END::TEXT;
 
 $$ LANGUAGE 'sql' IMMUTABLE;
 
 CREATE OR REPLACE FUNCTION GetSubNodeFromNode(XML, TEXT) RETURNS XML AS
 $$
   SELECT *
-  FROM unnest(xpath('//' || $2, $1))
+  FROM  unnest(
+    xpath(
+      '//' || $2, 
+      $1
+    )
+  )
   LIMIT 1
 $$ LANGUAGE SQL;
 
 CREATE OR REPLACE FUNCTION GetLevel1FromNode(XML, TEXT) RETURNS TEXT AS
 $$
-  SELECT extract_value('//*[name()=''' || $2 || ''']', $1)
+  SELECT extract_value(
+    '//*[name()=''' || $2 || ''']', 
+    $1
+  )
 $$ LANGUAGE SQL;
 
 CREATE OR REPLACE FUNCTION GetLevel2FromNode(XML, TEXT, TEXT) RETURNS TEXT AS
 $$
-  SELECT extract_value('//*[name()=''' || $2 || ''']/*[name()=''' || $3 || ''']', $1)
+  SELECT extract_value(
+    '//*[name()=''' || $2 || ''']/*[name()=''' || $3 || ''']', 
+    $1
+  )
 $$ LANGUAGE SQL;
 
 CREATE OR REPLACE FUNCTION GetArgumentFromNode(XML, TEXT) RETURNS TEXT AS
 $$
   SELECT extract_value('@' || $2, $1)
 $$ LANGUAGE SQL;
-
